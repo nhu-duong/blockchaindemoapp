@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BlockChainDemo</string>
+    <string name="title_activity_home">Home</string>
+    <string name="login">Log In</string>
+    <string name="purchase">Purchase</string>
+    <string name="domain">http://192.168.1.5</string>
+    <string name="turn_on_flashlight">Turn Flash On</string>
+    <string name="turn_off_flashlight">Turn Flash Off</string>
+    <string name="load_from_album">Load From Album</string>
+</resources>

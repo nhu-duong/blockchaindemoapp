@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/check_activity_padding_top"
+    tools:context=".CheckingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/check_activity_scanning_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/check_activity_qrcode_padding"
+            android:background="@color/green"
+            >
+
+            <ImageView
+                android:id="@+id/img_qrcode"
+                android:layout_width="@dimen/check_activity_qrcode_size"
+                android:layout_height="@dimen/check_activity_qrcode_size"
+                android:src="@drawable/qrcode"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/text_view_message"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/check_activity_qrcode_padding"
+        android:paddingHorizontal="@dimen/check_activity_qrcode_padding"
+        android:textAlignment="center"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
