@@ -82,7 +82,7 @@ public class CheckingActivity extends AppCompatActivity {
     }
 
     protected void startAnimation() {
-        countDownTimer = new CountDownTimer(10000, 500) {
+        countDownTimer = new CountDownTimer(1000000, 500) {
 
             public void onTick(long millisUntilFinished) {
                 if (!isFlashing || ((millisUntilFinished % 1000) > 500)) {

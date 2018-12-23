@@ -59,16 +59,16 @@ public class CustomerScannerActivity extends AppCompatActivity implements
         btnLoadFromAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                getIntent.setType("image/*");
+//                Intent getIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+//                getIntent.setType("image/*");
 
                 Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 pickIntent.setType("image/*");
+//
+//                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+//                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
 
-                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
-
-                startActivityForResult(chooserIntent, PICK_IMAGE);
+                startActivityForResult(pickIntent, PICK_IMAGE);
             }
         });
     }
@@ -77,6 +77,7 @@ public class CustomerScannerActivity extends AppCompatActivity implements
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        Log.d("BCA", "Customer Scanner activity on activity result");
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             Log.d("BLOCKCHAINAPP", "read success " + resultCode + " data " + data.getDataString());
             Uri bitmapUri = data.getData();
@@ -98,6 +99,7 @@ public class CustomerScannerActivity extends AppCompatActivity implements
         } else {
             Log.d("BLOCKCHAINAPP", "Wrong request code" + requestCode);
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

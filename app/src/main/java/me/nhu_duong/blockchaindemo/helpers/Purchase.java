@@ -10,12 +10,13 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import me.nhu_duong.blockchaindemo.R;
 
 public class Purchase {
 
-    public String doPayment(Activity context) throws FileNotFoundException {
+    public String doPayment(Activity context) throws IOException {
         Downloader d = new Downloader();
         Util u = new Util();
         Long currentTime = u.getCurrentTimeStamp();
@@ -42,7 +43,7 @@ public class Purchase {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("BCA", e.getMessage());
-            return null;
+            return "do payment error: " + e.getMessage();
         }
 
         return target;

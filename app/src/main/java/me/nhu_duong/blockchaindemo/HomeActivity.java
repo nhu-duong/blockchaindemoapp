@@ -24,6 +24,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import me.nhu_duong.blockchaindemo.helpers.Purchase;
 import me.nhu_duong.blockchaindemo.helpers.QRDecoder;
@@ -96,10 +97,11 @@ public class HomeActivity extends AppCompatActivity {
             try {
                 String image = purchase.doPayment(activity);
                 return image;
-            } catch (FileNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                return e.getMessage();
             }
-            return null;
+//            return null;
         }
 
         @Override
@@ -134,24 +136,22 @@ public class HomeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_SCANNING) {
             handleActivityScanningResult(resultCode, data);
-            return;
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void handleActivityScanningResult(int resultCode, @Nullable Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(REQUEST_CODE_SCANNING, resultCode, data);
+        IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
         if (result == null) {
             return;
         }
         if (result.getContents() == null) {
             Toast.makeText(this, "You closed the scan", Toast.LENGTH_LONG);
-            Log.d("TEST", "You closed the scan");
+            Log.d("BCA", "You closed the scan");
             return;
         }
         Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG);
-        Log.d("TEST", "Scan result: " + result.getContents());
         Intent intent = new Intent(activity, CheckingActivity.class);
         intent.putExtra("code_result", result.getContents());
         startActivity(intent);

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -101,8 +102,8 @@ public class Downloader {
         return baos.toByteArray();
     }
 
-    public byte[] getBitmapFromURL(String src) {
-        try {
+    public byte[] getBitmapFromURL(String src) throws IOException {
+//        try {
             URL url = new URL(src);
             HttpURLConnection connection = (HttpURLConnection) url
                     .openConnection();
@@ -111,10 +112,10 @@ public class Downloader {
             InputStream input = connection.getInputStream();
 
             return readBytes(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
     }
     public byte[] readBytes(InputStream inputStream) throws IOException {
         // this dynamically extends to take the bytes you read
